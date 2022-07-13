@@ -7,7 +7,7 @@ const Account = (props) => {
 
   const handleClickD = (event) => {
     event.preventDefault();
-    if (isNaN(amount)) {
+    if (isNaN(amount)|| amount <= 0) {
       console.log("Not a number");
     } else {
       setBalance(balance + Number(amount));
@@ -17,7 +17,7 @@ const Account = (props) => {
 
   const handleClickW = (event) => {
     event.preventDefault();
-    if (isNaN(amount)) {
+    if (isNaN(amount)|| amount <= 0) {
       console.log("Not a number");
     } else if (Number(amount) > balance) {
       console.log("Not enough in account");
