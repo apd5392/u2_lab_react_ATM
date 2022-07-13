@@ -1,23 +1,35 @@
-import { useState } from 'react'
-import '../styles/App.css'
+import { useState } from "react";
+import "../styles/App.css";
 
 const Account = (props) => {
-  let [amount, setAmount] = useState("")
-  let [balance, setBalance] = useState(0)
+  let [amount, setAmount] = useState("");
+  let [balance, setBalance] = useState(0);
 
-  const handleClick = (event) => {
-    event.preventDefault()
+  const handleClickD = (event) => {
+    event.preventDefault();
     if (isNaN(amount)) {
-      console.log('Not a number')
+      console.log("Not a number");
     } else {
-      setBalance(balance + Number(amount))
+      setBalance(balance + Number(amount));
     }
-    setAmount(0)
-  }
+    setAmount(0);
+  };
 
-  let balanceClass = 'balance'
+  const handleClickW = (event) => {
+    event.preventDefault();
+    if (isNaN(amount)) {
+      console.log("Not a number");
+    } else if (Number(amount) > balance) {
+      console.log("Not enough in account");
+    } else {
+      setBalance(balance - Number(amount));
+    }
+    setAmount(0);
+  };
+
+  let balanceClass = "balance";
   if (balance <= 0) {
-    balanceClass += ' zero'
+    balanceClass += " zero";
   }
 
   return (
@@ -39,11 +51,17 @@ const Account = (props) => {
           className="btn"
           type="submit"
           value="Deposit"
-          onClick={handleClick}
+          onClick={handleClickD}
+        />
+        <input
+          className="btn"
+          type="submit"
+          value="Withdraw"
+          onClick={handleClickW}
         />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Account
+export default Account;
